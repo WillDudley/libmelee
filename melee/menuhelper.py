@@ -286,6 +286,19 @@ class MenuHelper():
                 return
             return
 
+        if character_selected == character and cpu_level>0 and (cpu_level == ai_state.cpu_level):
+            print(2)
+            if controller.prev.button[enums.Button.BUTTON_START] == True:
+                controller.release_button(enums.Button.BUTTON_START)
+                return
+            if start:
+                controller.press_button(enums.Button.BUTTON_START)
+                return
+                print(3)
+            else:
+                controller.release_all()
+            return
+
         # Make sure the port is set to "Human"
         if gamestate.players[controlling_port].controller_status != enums.ControllerStatus.CONTROLLER_HUMAN:
             MenuHelper.change_controller_status(controller, gamestate, controlling_port, enums.ControllerStatus.CONTROLLER_HUMAN)
