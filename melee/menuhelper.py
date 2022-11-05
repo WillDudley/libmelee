@@ -360,7 +360,8 @@ class MenuHelper():
                 controller.release_all()
                 return
             if start and (gamestate.ready_to_start == 0):
-                controller.press_button(enums.Button.BUTTON_START)
+                if gamestate.frame > 20:
+                    controller.press_button(enums.Button.BUTTON_START)
                 return
             else:
                 controller.release_all()
