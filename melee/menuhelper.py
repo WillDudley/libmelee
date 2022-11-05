@@ -286,8 +286,10 @@ class MenuHelper():
                 return
             return
 
-        if character_selected == character and cpu_level>0 and (cpu_level == ai_state.cpu_level):
-            print(2)
+        if character_selected == character and cpu_level > 0 and (cpu_level == ai_state.cpu_level) and start:
+            if gamestate.frame < 20:
+                controller.release_all()  # Fixes bug that messes up stage selection when character selection is instant
+                return
             if controller.prev.button[enums.Button.BUTTON_START] == True:
                 controller.release_button(enums.Button.BUTTON_START)
                 return
